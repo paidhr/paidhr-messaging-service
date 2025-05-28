@@ -1,7 +1,7 @@
 # paidhr-messaging-service
 
 
-# 🧪 Backend Engineering Assessment – Messenger App (NestJS + BullMQ)
+# 🧪 Backend Engineering Assessment – Messenger App (NestJS + MongoDB + BullMQ)
 
 This assessment evaluates your **system design**, **database modeling**, and **backend engineering** skills — particularly using **NestJS** and **BullMQ**.
 
