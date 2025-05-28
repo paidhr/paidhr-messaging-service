@@ -42,16 +42,7 @@ Use a diagramming tool like:
 
 ### **Requirements**
 
-Include a `user` entity with at least the following:
-
-| **Field** | **Type**     | **Description**                       |
-| --------- | ------------ | ------------------------------------- |
-| id        | long or UUID | Unique user ID                        |
-| username  | string       | Unique system username                |
-| password  | string       | Encrypted password                    |
-| active    | boolean      | Whether user is active or deactivated |
-
-Your model must support:
+Your implementation must support:
 
 * **Private Conversations** between 2 users
 * **Group Chats** with join/leave/kick support (no access to old messages before join)
@@ -86,7 +77,7 @@ You’ll implement the **backend API and message queue** system using NestJS and
 
 3. **Fetch Conversation Messages**
 
-   * `GET /conversations/:id/messages`
+   * `GET /messages`
    * Supports private, group, or public
 
 4. **Queue Processing**
@@ -101,20 +92,6 @@ You’ll implement the **backend API and message queue** system using NestJS and
 
    * For media messages (optional but bonus)
 
-### 🧩 Suggested Folder Structure
-
-```
-src/
-  auth/
-  users/
-  conversations/
-  messages/
-  delivery/
-  queue/
-  uploads/
-```
-
----
 
 ## ✅ Task 3: Thought Process – `notes.md`
 
