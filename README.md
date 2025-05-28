@@ -73,12 +73,12 @@ You’ll implement the **backend API and message queue** system using NestJS and
 2. **Mark Message as Read**
 
    * `POST /messages/:id/read`
-   * Adds job to update read status
+   * Update message read status
 
 3. **Fetch Conversation Messages**
 
    * `GET /messages`
-   * Supports private, group, or public
+   * Supports search by conversation
 
 4. **Queue Processing**
 
@@ -97,10 +97,10 @@ You’ll implement the **backend API and message queue** system using NestJS and
 
 In `notes.md`, explain:
 
-* Your reasoning for using **SQL vs NoSQL**
+* Your reasoning for your entity relationships*
 * Your assumptions
 * Trade-offs in your design
-* Why BullMQ was used and how
+* How BullMQ was used
 * Weaknesses and mitigations
 
 > ⏰ Suggested time: 30 minutes
