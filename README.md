@@ -1,133 +1,98 @@
-# paidhr-messaging-service
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+</p>
 
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-# 🧪 Backend Engineering Assessment – Messenger App (NestJS + MongoDB + BullMQ)
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-This assessment evaluates your **system design**, **database modeling**, and **backend engineering** skills — particularly using **NestJS** and **BullMQ**.
+## Description
 
----
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## 🔧 Setup Instructions
+## Project setup
 
-1. Clone the provided GitHub repository.
-2. Work on the `dev` branch (do **not** touch `main`).
-3. **Record your screen with Loom** (from start to finish).
-4. Submit by creating a **pull request from `dev` to `main`** and include the Loom video link.
+```bash
+$ npm install
+```
 
-**⏱ Time Limit: 2 Hours**
+## Compile and run the project
 
----
+```bash
+# development
+$ npm run start
 
-## 📌 Task Overview
+# watch mode
+$ npm run start:dev
 
-You're building part of a Messenger App used by an organization. This backend system must support real-time and asynchronous communication (using BullMQ for message queues).
+# production mode
+$ npm run start:prod
+```
 
-Your work includes:
+## Run tests
 
-1. **Designing a database model**
-2. **Setting up a NestJS-based backend**
-3. **Integrating BullMQ for asynchronous message handling**
-4. **Writing up your thought process**
-5. **Proposing architecture for future improvements**
+```bash
+# unit tests
+$ npm run test
 
----
+# e2e tests
+$ npm run test:e2e
 
-## ✅ Task 1: Database Model (ERD)
+# test coverage
+$ npm run test:cov
+```
 
-Use a diagramming tool like:
+## Deployment
 
-* DrawSQL: [https://drawsql.app](https://drawsql.app)
-* dbdiagram.io: [https://dbdiagram.io](https://dbdiagram.io)
-* Whimsical / Draw\.io also acceptable.
+When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
-### **Requirements**
+If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
 
-Your implementation must support:
+```bash
+$ npm install -g @nestjs/mau
+$ mau deploy
+```
 
-* **Private Conversations** between 2 users
-* **Group Chats** with join/leave/kick support (no access to old messages before join)
-* **Public Channels** (any user can read; only members can write)
-* **Delivery Status** (e.g., SENT, DELIVERED, FAILED)
-* **Read Status** (timestamps per user per message)
-* **Multimedia / File Sharing**
+With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
-### 📄 Output:
+## Resources
 
-* Save and upload the ERD as `database-model.png` or `database-model.jpg`.
+Check out a few resources that may come in handy when working with NestJS:
 
-> ⏰ Suggested time: 60 minutes
+- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
+- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
+- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
+- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
+- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
+- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
+- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
+- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
 
----
+## Support
 
-## ✅ Task 2: Backend System Using NestJS + BullMQ
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-You’ll implement the **backend API and message queue** system using NestJS and BullMQ.
+## Stay in touch
 
-### 💡 Required Features
+- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-1. **Send Message**
+## License
 
-   * `POST /messages`
-   * Publishes message to BullMQ queue
-
-2. **Mark Message as Read**
-
-   * `POST /messages/:id/read`
-   * Update message read status
-
-3. **Fetch Conversation Messages**
-
-   * `GET /messages`
-   * Supports search by conversation
-
-4. **Queue Processing**
-
-   * Use **BullMQ** (with Redis) to:
-
-     * Handle message delivery
-     * Simulate delays/network conditions
-     * Update delivery/read statuses
-
-5. **Basic File Upload Endpoint**
-
-   * For media messages (optional but bonus)
-
-
-## ✅ Task 3: Thought Process – `notes.md`
-
-In `notes.md`, explain:
-
-* Your reasoning for your entity relationships*
-* Your assumptions
-* Trade-offs in your design
-* How BullMQ was used
-* Weaknesses and mitigations
-
-> ⏰ Suggested time: 30 minutes
-
----
-
-## ✅ Task 4: Proposal – `proposal.md`
-
-In `proposal.md`, propose how the system could be extended to improve:
-
-| Driver           | Proposal Example                  |
-| ---------------- | --------------------------------- |
-| **Security**     | JWT Auth, RBAC, Input validation  |
-| **Availability** | Redis cluster, horizontal scaling |
-| **Reliability**  | Retry queues, Dead-letter queues  |
-
-> ⏰ Suggested time: 30 minutes
-
----
-
-## 🔚 Submission Instructions
-
-1. Upload your diagram.
-2. Ensure your NestJS backend code is committed.
-3. Include `notes.md` and `proposal.md`.
-4. Open a **pull request** from `dev` → `main`.
-5. Add your **Loom video link** in the PR description.
-6. Do **not merge** the PR.
-
-
+Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
