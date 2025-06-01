@@ -25,6 +25,7 @@ export class ResponseInterceptor implements NestInterceptor {
           message: data.message,
           dat: data.data,
         };
+        return response;
       }),
     );
   }

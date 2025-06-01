@@ -1,8 +1,25 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { ConversationTypeEnum } from '../enums/conversation.enum';
 import { Types } from 'mongoose';
 
-@Schema({})
+export type ConversationDocument = Conversation & Document;
+@Schema({
+  toJSON: {
+    virtuals: true,
+    transform: (doc, ret) => {
+      ret.id = ret._id;
+      delete ret._id, delete ret.__v;
+    },
+  },
+  toObject: {
+    virtuals: true,
+    transform: (doc, ret) => {
+      ret.id = ret._id;
+      delete ret._id, delete ret.__v;
+    },
+  },
+  timestamps: true,
+})
 export class Conversation {
   @Prop({ enum: ConversationTypeEnum, required: true })
   type: ConversationTypeEnum;
@@ -19,3 +36,5 @@ export class Conversation {
   @Prop({ type: Boolean, default: true })
   isPublic: Boolean;
 }
+
+export const ConversationSchema = SchemaFactory.createForClass(Conversation);

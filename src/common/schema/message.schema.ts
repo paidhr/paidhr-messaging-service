@@ -2,7 +2,25 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Types } from 'mongoose';
 import { MessageTypeEnum } from '../enums/message.enum';
 
-@Schema({})
+export type MessageDocument = Message & Document;
+
+@Schema({
+  toJSON: {
+    virtuals: true,
+    transform: (doc, ret) => {
+      ret.id = ret._id;
+      delete ret._id, delete ret.__v;
+    },
+  },
+  toObject: {
+    virtuals: true,
+    transform: (doc, ret) => {
+      ret.id = ret._id;
+      delete ret._id, delete ret.__v;
+    },
+  },
+  timestamps: true,
+})
 export class Message {
   @Prop({ type: Types.ObjectId, ref: 'Conversation', required: true })
   conversationId: Types.ObjectId;
