@@ -22,3 +22,11 @@ export class ConversationMember {
 
 export const ConversationMemberSchema =
   SchemaFactory.createForClass(ConversationMember);
+
+// Relationship
+ConversationMemberSchema.index(
+  { conversationId: 1, userId: 1 },
+  { unique: true },
+);
+
+ConversationMemberSchema.index({ userId: 1 });

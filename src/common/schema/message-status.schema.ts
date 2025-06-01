@@ -15,3 +15,4 @@ export class MessageStatus {
 }
 
 export const MessageStatusSchema = SchemaFactory.createForClass(MessageStatus);
+MessageStatusSchema.index({ messageId: 1, userid: 1 }, { unique: true });
