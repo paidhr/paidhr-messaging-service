@@ -5,6 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './feature/user/user.module';
 import { ConversationModule } from './feature/conversation/conversation.module';
 import { MessageModule } from './feature/message/message.module';
+import { BullModule } from '@nestjs/bullmq';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -20,6 +22,16 @@ import { MessageModule } from './feature/message/message.module';
         },
         authSource: 'admin',
       }),
+    }),
+
+    BullModule.forRoot({
+      connection: {
+        host: 'localhost',
+        port: 6379,
+      },
+    }),
+    MulterModule.register({
+      dest: './uploads',
     }),
   ],
   controllers: [AppController],

@@ -8,17 +8,27 @@ import {
   Min,
 } from 'class-validator';
 
-export class RegisterUserDto {
+export class GetSignleUserDto {
+  @IsString()
+  @IsNotEmpty()
+  username: string;
+}
+
+export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   username: string;
 
-  @IsNotEmpty()
   @IsEmail()
+  @IsNotEmpty()
   email: string;
+
+  @IsString()
+  @IsOptional()
+  avatarUrl?: string;
 }
 
-export class PaginateDto {
+export class QueryUsersDto {
   @IsOptional()
   @Transform(({ value }) => parseInt(value))
   @IsNumber()

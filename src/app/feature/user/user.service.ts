@@ -1,58 +1,74 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { PaginateDto, RegisterUserDto } from 'src/common/dto/user.dto';
+import {
+  CreateUserDto,
+  GetSignleUserDto,
+  QueryUsersDto,
+} from 'src/common/dto/user.dto';
 import { User, UserDocument } from 'src/common/schema/user.schema';
 
 @Injectable()
 export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async registerUser(payload: RegisterUserDto) {
-    // check if user name or email has been taken
+  async registerUser(payload: CreateUserDto) {
+    // check if the user name is chosen and also the display name
+
     const checkEmail = await this.userModel.findOne({ email: payload.email });
 
-    if (checkEmail) {
-      throw new BadRequestException('User with email already exists');
-    }
+    if (checkEmail) throw new BadRequestException('Emaiil already taken');
 
     const checkUsername = await this.userModel.findOne({
       username: payload.username,
     });
 
-    if (checkUsername) {
-      throw new BadRequestException('User with this username already exists');
-    }
+    if (checkUsername) throw new BadRequestException('Username already taken');
 
-    const user = await this.userModel.create(payload);
-
-    // create the user if none of these has been taken
+    const user = this.userModel.create({
+      ...payload,
+    });
 
     return user;
   }
 
-  async fetchAllUsers(options: PaginateDto) {
-    const { limit = 10, page = 1 } = options;
+  async fetchAllUsers(payload: QueryUsersDto) {
+    const { page = 1, limit = 10 } = payload;
 
     const skip = (page - 1) * limit;
 
     const users = await this.userModel
       .find({})
-      .sort({ createdAt: -1 })
+      .sort({ created: -1 })
       .skip(skip)
       .limit(limit)
-      .populate('_id email username createdAt updatedAt');
+      .populate('username email avatarUrl');
 
-    const totalUsers = await this.userModel.countDocuments();
-
+    const total = await this.userModel.countDocuments();
     return {
-      users: users,
+      users: users.reverse(),
       pagination: {
         page,
         limit,
-        total: totalUsers,
-        pages: Math.ceil(totalUsers / limit),
+        total,
+        pages: Math.ceil(total / limit),
       },
     };
+  }
+
+  async fetchSingleUser(payload: GetSignleUserDto) {
+    const user = await this.userModel.findOne({ username: payload.username });
+
+    if (!user) throw new BadRequestException('User does not exist');
+
+    return user;
+  }
+
+  async fetchUserById(userId: string) {
+    const user = await this.userModel.findById(userId);
+
+    if (!user) throw new BadRequestException('User not found');
+
+    return user;
   }
 }

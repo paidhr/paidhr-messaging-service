@@ -23,7 +23,7 @@ export class ResponseInterceptor implements NestInterceptor {
           status: true,
           code: context.switchToHttp().getResponse().statusCode,
           message: data.message,
-          dat: data.data,
+          data: data.data,
         };
         return response;
       }),

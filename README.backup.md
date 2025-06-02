@@ -133,6 +133,8 @@ In `proposal.md`, propose how the system could be extended to improve:
 ## ER Diagram
 
 Here is the Entity Relationship Diagram
-![ERD](https://github.com/paidhr/paidhr-messaging-service/blob/dev/erd.png)
+![ERD](https://github.com/paidhr/paidhr-messaging-service/blob/dev/database-model.png)
 
 [Link To ERD](https://drawsql.app/teams/codedadis/diagrams/paidhr)
+
+https://www.awesomescreenshot.com/video/40486057?key=5c3d541cdb48ec3fcedd75cd5a85f46e

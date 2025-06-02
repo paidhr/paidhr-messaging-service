@@ -1,21 +1,33 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { UserService } from './user.service';
-import { PaginateDto, RegisterUserDto } from 'src/common/dto/user.dto';
+import {
+  CreateUserDto,
+  GetSignleUserDto,
+  QueryUsersDto,
+} from 'src/common/dto/user.dto';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('register')
-  async registerUser(@Body() body: RegisterUserDto) {
+  async registerUser(@Body() body: CreateUserDto) {
     const user = await this.userService.registerUser(body);
-
-    return { message: 'User registered succesfully', data: user };
+    return { message: 'User registered successfully', data: user };
   }
 
-  @Get()
-  async fetchAllUsers(@Query() query: PaginateDto) {
+  @Get('')
+  async fetchAllUsers(@Query() query: QueryUsersDto) {
     const users = await this.userService.fetchAllUsers(query);
-    return { message: 'Users fetched successfully', data: users };
+    return { message: 'Users fetched siuccessfully', data: users };
+  }
+
+  @Get([':username', '@:username'])
+  async getSingleUser(@Param() param: GetSignleUserDto) {
+    const cleanUsername = param.username.replace(/^@/, '');
+    const user = await this.userService.fetchSingleUser({
+      username: cleanUsername,
+    });
+    return { message: 'User fetched successfully', data: user };
   }
 }

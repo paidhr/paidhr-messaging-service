@@ -10,12 +10,14 @@ import {
   ConversationMember,
   ConversationMemberSchema,
 } from 'src/common/schema/conversation-member.schema';
+import { UserModule } from '../user/user.module';
 
 @Module({
   providers: [ConversationService],
   controllers: [ConversationController],
   exports: [ConversationService],
   imports: [
+    UserModule,
     MongooseModule.forFeature([
       { name: Conversation.name, schema: ConversationSchema },
       {
